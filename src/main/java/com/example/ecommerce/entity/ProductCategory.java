@@ -2,16 +2,12 @@ package com.example.ecommerce.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
 @Table(name="product_category")
 // @Data -- known bug
-@Getter
-@Setter
 public class ProductCategory {
 
     @Id
@@ -25,4 +21,28 @@ public class ProductCategory {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
 
+    //getter and setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 }
